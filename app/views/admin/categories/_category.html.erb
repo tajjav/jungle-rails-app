@@ -1,0 +1,25 @@
+<tr>
+  <td>
+    <%= category.name %>
+  </td>
+
+  <td>
+    <%= category.products.each do |product| %>
+      <article>
+          <%= link_to product_path(product) do %>
+            <%= image_tag product.image.thumb.url , alt: product.name %>
+            <h4>
+              <span><%= product.name %></span>
+            </h4>
+          <% end%>
+          <span>
+            <% if product.quantity == 0 %>
+              <article class="soldout">
+                SOLD OUT!
+              </article>
+            <% end %>
+          </span>
+        </article>
+    <% end %>
+  </td>
+</tr>
