@@ -37,8 +37,16 @@
             <% Category.all.each do |category| %>
             <li class="nav-item">
               <%= link_to category.name, category, class: "nav-link" %>
+              <% end %>
+              <% if current_user %>
+                <li> Signed in as <%= current_user.name %> </li> 
+                <li> <%= link_to "Logout", '/logout' %></li>
+              <% else %>
+                <li>  <%= link_to 'Login', '/login' %> </li> 
+                <li> <%= link_to 'Signup', '/signup' %></li>
+              <% end %>
+              <% yield %>
             </li>
-            <% end %>
           <%# </ul>
         </li> %>
       </ul>
